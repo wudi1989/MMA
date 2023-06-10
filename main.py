@@ -107,10 +107,6 @@ for i in range(4):
         best_mae_result_list.append(str(Decimal(test_MAE_result).quantize(Decimal('0.000'))))
         best_rmse_result_list.append(str(Decimal(test_RMSE_result).quantize(Decimal('0.000'))))
 
-        print("=========test_RMSE_result:" + str(
-            Decimal(test_RMSE_result).quantize(Decimal('0.000'))) + "test_MAE_result:" + str(
-            Decimal(test_MAE_result).quantize(Decimal('0.000'))) + "============")
-
         sess.close()
     tf.reset_default_graph()
 
@@ -169,8 +165,6 @@ for j in range(args.train_epoch):
     cumulative_time += total_time
 
     time_list.append(cumulative_time)
-
-    print("val RMSE:", str(val_rmse), "\t val MAE:", str(val_mae))
 
     test_numerator = np.multiply((test_R.T - final_result), test_mask_R.T)
     test_mae = np.sum(np.abs(test_numerator)) / float(num_test_ratings)
